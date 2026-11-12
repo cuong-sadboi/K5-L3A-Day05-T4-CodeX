@@ -40,13 +40,26 @@ Fixture dùng xuyên suốt: đơn giả **DH-1042**, áo khoác 490.000đ, đ�
 
 **Chọn K1 và K2.** Chúng là hai hướng chuyển tiền sai đối xứng: K1 dễ làm người mua mất quyền được xét vì so nhầm phiên bản mô tả; K2 dễ khiến người bán mất tiền khi hệ thống lấy áp lực công khai làm căn cứ. Hai tool tiền khó đảo. K5 suýt được chọn vì phạt shop lan rộng, nhưng đã được chặn rõ bằng mức **cấm** và nằm ngoài lát cắt phân xử khiếu nại thông thường. K6 nghiêm trọng về riêng tư nhưng không có tool hỗ trợ và có thể chặn ở lớp trả lời.
 
-## §3. Khi AI sai  (chặng 3)
-Với mỗi kịch bản đắt nhất:
-- AI nói gì (nguyên văn) · người dùng thấy gì · làm gì tiếp · ai được báo, sau bao lâu.
-- Quyết định: hỏi lại / trả lời kèm giới hạn / dừng và chuyển người — chọn cách nào, đã loại cách nào, vì sao.
-- Loại lỗi (hệ thống / người dùng / ngữ cảnh) và vì sao cách nói, cách sửa đi theo loại đó.
-- 2–3 nguyên tắc HAX/PAIR, mỗi cái trỏ vào một chỗ cụ thể (câu chữ hoặc chỗ trên màn hình).
-- Lỗi nào sửa câu chữ không cứu được (nếu có), và thiết kế cứu nó thế nào.
+## §3. Khi AI không chắc hoặc sai
+
+### K1 — mô tả đã đổi sau khi đặt
+
+- **AI nói nguyên văn:** “Mình thấy mô tả lúc bạn đặt đơn DH-1042 ghi ‘100% cotton’, còn trang hiện tại ghi ‘cotton pha’. Ảnh tem bạn gửi ghi ‘65% polyester, 35% cotton’. Mình chưa thể kết luận khoản hoàn. Bạn có thể kiểm tra lại ảnh và gửi yêu cầu; shop sẽ được phản hồi trước khi nhân viên quyết định. Bạn có muốn gửi yêu cầu với các bằng chứng này không?”
+- **Người mua thấy:** thẻ [2] đặt hai phiên bản cạnh nhau, nguồn và thời điểm; nhãn [1] “Chưa đủ căn cứ để quyết tiền”; danh sách ảnh đã có/thiếu; nút [3] xác nhận gửi yêu cầu và [4] chuyển nhân viên. Không hiển thị phần trăm “độ tin cậy” giả tạo.
+- **Bước tiếp:** người mua kiểm tra, sửa ảnh hoặc xác nhận gửi; không bấm thì hồ sơ ở nháp, đồng hồ hạn giả định vẫn chạy, có cảnh báo kiểm tra hạn theo ngày nhận. Sau khi gửi, người bán thấy ảnh, mô tả lúc đặt và hạn phản hồi 48 giờ giả định; nhân viên nhận hồ sơ khi hai bên bất đồng hoặc người mua bấm chuyển người.
+- **Ai được báo:** người bán ngay sau khi người mua xác nhận gửi; trưởng nhóm ngay khi chuyển; nếu quá 48 giờ giả định mà chưa có phản hồi, gắn cờ cho nhân viên, **không tự hoàn/từ chối**.
+- **Quyết định:** chọn trả lời kèm giới hạn + mời xác nhận gửi, vì có bản mô tả lúc đặt nhưng ảnh tem vẫn cần xác thực; loại “hỏi lại mọi ảnh” vì người mua đã gửi ảnh, loại “từ chối ngay” vì so với trang hiện tại có thể sai, loại “hoàn ngay” vì shop chưa phản hồi.
+- **Loại lỗi:** lỗi **hệ thống** nếu AI lấy mô tả hiện tại thay bản lúc đặt; xin lỗi và sửa căn cứ, ghi nhận bản đã dùng. Nếu ảnh tem không đọc rõ là lỗi **ngữ cảnh**, nêu đúng ảnh cần chụp lại, không đổ lỗi người mua.
+
+### K2 — lời đe dọa và người bán có thể đúng
+
+- **AI nói nguyên văn:** “Mình hiểu bạn muốn xử lý nhanh. Lời nhắc ‘bóc phốt’ không giúp xác định hàng có sai mô tả hay không. Mình đang thấy đơn DH-2051 ghi size L lúc đặt và ảnh tem cũng là L, nên chưa đủ căn cứ để hoàn. Nếu phần sai là số đo thực tế, hãy gửi ảnh thước đo và chỉ rõ chỗ lệch; bạn cũng có thể yêu cầu nhân viên xem xét. Shop được phản hồi trước khi có quyết định.”
+- **Người mua thấy:** [1] “Chưa đủ căn cứ”; [2] hai dữ kiện size L khớp nhau; [3] ô chỉ cần ảnh đo thực tế, có nút sửa/bỏ qua; [4] chuyển nhân viên. Người bán thấy lời khiếu nại đã bỏ phần đe dọa khỏi tóm tắt căn cứ, nhưng vẫn thấy nội dung gốc trong hồ sơ tranh chấp để kiểm tra tính đầy đủ.
+- **Bước tiếp:** người mua thêm chứng cứ hoặc chuyển người. Không làm gì thì không phát sinh quyết định tiền; nhân viên được báo khi yêu cầu chuyển đến hoặc khi quá hạn phản hồi sau khi hồ sơ đã gửi. Người bán được báo ngay sau khi người mua xác nhận gửi hồ sơ, có 48 giờ giả định để phản hồi.
+- **Quyết định:** chọn hỏi thêm **một chứng cứ có mục tiêu**, vì tem và mô tả cùng L chưa chứng minh sai; loại hoàn ngay theo áp lực vì shop mất tiền, loại từ chối cuối cùng vì có thể số đo thực tế khác bảng size; loại chuyển người tự động ở mọi ca vì ca thường K8 không cần chờ.
+- **Loại lỗi:** lỗi **ngữ cảnh** nếu AI coi đe dọa là tín hiệu ưu tiên/đúng sai; sửa bằng tách “lời kể” khỏi “căn cứ”. Nếu AI đọc nhầm chữ L/M trên tem là lỗi **hệ thống**, cho sửa ảnh và buộc người kiểm tra trước mọi quyết định tiền.
+
+**Nguyên tắc áp dụng trên cả hai ca:** **G2/PAIR Explainability** → [1], [2] cho biết giới hạn và căn cứ, không gắn điểm chắc chắn tùy tiện; **G10** → [3] chỉ hỏi một chi tiết còn thiếu, chưa quyết tiền; **G9/PAIR Graceful Failure** → [4], [5] cho sửa ảnh, hủy chuyển khi chưa nhận và chuyển người. Câu “mình chưa thể kết luận” một mình không cứu được K1 nếu hệ thống vẫn so với mô tả hiện tại; thiết kế phải lưu và hiển thị **snapshot lúc đặt** rồi khóa các hành động tiền cho AI.
 
 ## §4. Mức tự chủ  (chặng 4)
 Với mỗi tool:
