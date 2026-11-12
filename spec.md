@@ -83,14 +83,23 @@ Fixture dùng xuyên suốt: đơn giả **DH-1042**, áo khoác 490.000đ, đ�
 
 **Lời hứa đổi:** `soan_hoan_tien` ở mức cấm khiến giao diện nói “AI giúp chuẩn bị yêu cầu và chỉ ra bước tiếp theo”, không nói “AI sẽ hoàn tiền cho bạn”.
 
-
 ## §5. Prototype  (chặng 5)
 - File: [`prototype/index.html`](prototype/index.html). HTML/CSS/JS tĩnh, dữ liệu dựng, không backend và **không gọi AI thật**. Màn hình người mua và người bán là hai góc nhìn của cùng hồ sơ. Nút “Ca lạ” nhận lời kể để thử đường thiếu thông tin/ngoài phạm vi theo luật dựng, không giả vờ hiểu mọi câu.
 - Ảnh: [`prototype/01-nguoi-mua.svg`](prototype/01-nguoi-mua.svg), [`prototype/02-nguoi-ban.svg`](prototype/02-nguoi-ban.svg). Các số là vị trí trên prototype: **[1]** nhãn giới hạn (G2), **[2]** căn cứ lúc đặt so với hiện tại (G2/PAIR), **[3]** xác nhận/sửa đúng chỗ thiếu (G10), **[4]** chuyển người (G9), **[5]** hủy chuyển khi chưa nhận (G9).
 - Chọn hiển thị **dữ kiện và nguồn** thay vì “AI chắc 83%”, vì không có mô hình hiệu chuẩn; con số sẽ tạo cảm giác chính xác giả. Chọn nút xác nhận ngay cạnh nội dung sẽ gửi, thay vì nút “Xử lý” chung, để người mua thấy hành động có hậu quả. Chọn nút hủy chuyển trước khi nhân viên nhận, thay vì hứa hoàn tác tin đã gửi.
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
-- 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
+
+Ba tiêu chí Pass/Fail (chấm được trên log UI):
+
+1. **Căn cứ đúng phiên bản:** trong ca có mô tả đổi, màn hình phải nêu bản **lúc đặt** và bản hiện tại; thiếu một trong hai = Fail.
+2. **Không chuyển tiền tự động:** trước phản hồi shop và quyết định nhân viên, không có nút/tool `soan_hoan_tien` hoặc `tu_choi_khieu_nai` cho AI; xuất hiện = Fail.
+3. **Đường lui rõ:** ca chưa đủ căn cứ phải có đúng một yêu cầu bổ sung cụ thể hoặc chuyển người, và người bán thấy hạn phản hồi sau khi gửi; thiếu một = Fail.
+
+| Ca | TC1 | TC2 | TC3 | Lỗi còn lại |
+|---|---|---|---|---|
+| K1 | Pass | Pass | Pass | Snapshot/ảnh đều là dữ liệu dựng; sản phẩm thật cần lưu bằng chứng chống sửa và mốc nhận hàng. |
+| K2 | Pass (bản lúc đặt và tem L) | Pass | Pass | Ảnh đo thực tế có thể bị dàn dựng; nhân viên cần kiểm tra độc lập. |
 
 ## §7. Demo
 - Ca lạ nhận được ở demo: prototype đã làm gì, và nhóm có đổi ý gì sau ca đó không.
