@@ -62,15 +62,27 @@ Fixture dùng xuyên suốt: đơn giả **DH-1042**, áo khoác 490.000đ, đ�
 **Nguyên tắc áp dụng trên cả hai ca:** **G2/PAIR Explainability** → [1], [2] cho biết giới hạn và căn cứ, không gắn điểm chắc chắn tùy tiện; **G10** → [3] chỉ hỏi một chi tiết còn thiếu, chưa quyết tiền; **G9/PAIR Graceful Failure** → [4], [5] cho sửa ảnh, hủy chuyển khi chưa nhận và chuyển người. Câu “mình chưa thể kết luận” một mình không cứu được K1 nếu hệ thống vẫn so với mô tả hiện tại; thiết kế phải lưu và hiển thị **snapshot lúc đặt** rồi khóa các hành động tiền cho AI.
 
 ## §4. Mức tự chủ  (chặng 4)
-Với mỗi tool:
-- Mức của nhóm (tự làm / cần người duyệt / cấm). Nếu cần người duyệt: ai duyệt · người duyệt thấy gì · quá hạn thì sao.
-- Lý do theo cost-of-error: sai thì ai chịu gì · đảo lại được không · chờ người thì mất gì.
-- Phương án đã cân nhắc và vì sao loại.
-Thêm:
-- Tool khó xếp nhất: mỗi người từng chọn gì, cái giá của mỗi phía (trỏ về kịch bản ở §2), nhóm chốt thế nào.
-- Thử mức đã đặt trên 2 kịch bản đắt nhất + 1 kịch bản bình thường: cái sai có bị chặn không? còn việc nào làm khi lẽ ra phải hỏi? người dùng bình thường có phải chờ vô ích không?
-- Luật thêm hoặc tool tách bước (nếu có), và vì sao.
-- Một mức tự chủ đã đổi lời hứa nào với người dùng.
+
+| Tool | Mức và người duyệt | Cái giá khi sai, khả năng đảo; cái giá khi chờ | Phương án loại |
+|---|---|---|---|
+| `yeu_cau_bang_chung` | **Cần người duyệt**: người mua xác nhận mẫu gửi cho mình; nhân viên duyệt trước mẫu gửi shop. Thấy ảnh đã có, ảnh thiếu và nội dung sắp gửi. Không duyệt thì giữ nháp, nhắc hạn giả định. | Tin tới rồi không rút. Hỏi lặp làm người mua mất thời gian, có thể lỡ hạn; chờ một cú bấm ngắn rẻ hơn. | Tự gửi bị K9; cấm thì K3/K4 không có đường bổ sung. |
+| `chuyen_truong_nhom` | **Tự làm** khi người dùng bấm chuyển hoặc dữ kiện xung đột; hiển thị [5] trạng thái và nút **Hủy chuyển** trước khi trưởng nhóm nhận. Khi đã nhận thì chỉ cho gửi đính chính. | Chuyển nhầm tốn công nhân viên nhưng không chuyển tiền; đảo được trước khi nhận. Chờ phê duyệt mới chuyển làm K1 chậm, có thể lỡ hạn. | Cần duyệt thêm một tầng không giúp xác minh; cấm thì ca bất đồng bế tắc. |
+| `soan_hoan_tien` | **Cấm AI gọi trực tiếp**. Chỉ nhân viên xử lý qua quy trình sàn ngoài prototype. | Hoàn sai: shop mất tiền, có thể mất hàng; tiền đã về người mua khó thu hồi. Chờ người tốn thời gian nhưng ít hại hơn quyết nhầm K2. | “Cần người mua duyệt” vô nghĩa vì người mua hưởng tiền; một cú duyệt nhanh của nhân viên khi thiếu phản hồi shop vẫn có thể sai. |
+| `tu_choi_khieu_nai` | **Cấm AI gọi trực tiếp**. Nhân viên xử lý qua quy trình ngoài prototype. | Đóng sai: tiền về shop, người mua giữ hàng sai; khó mở lại đúng hạn. Chờ người tốn thời gian nhưng chặn K1. | Tự đóng theo mô tả hiện tại dễ sai; người bán tự duyệt có xung đột lợi ích. |
+| `phat_shop` | **Cấm** trong luồng này; chuyển bộ phận chuyên trách qua nhân viên. | Trừ điểm/khóa ảnh hưởng cả shop, khó đảo hết thiệt hại. Chờ điều tra là cần thiết; tin nhắn K5 chưa đủ căn cứ. | Duyệt một lần bởi khách/AI không thay điều tra. |
+
+**Tool khó xếp nhất: `yeu_cau_bang_chung`.** Bài tập để nhóm điền sau khi mỗi người tự chọn: thành viên 1 [mức/lý do], thành viên 2 [mức/lý do], thành viên 3 [mức/lý do]. Bản nháp chốt **cần người duyệt** vì K9 cho thấy tin hỏi lặp đã tới thì không thu lại, nhưng K3/K4 cho thấy cấm hẳn gây bế tắc. Tách bước “soạn câu hỏi” (AI tự làm, sửa được) khỏi “gửi đi” (người liên quan duyệt). Không điền lựa chọn cá nhân thay người thật.
+
+**Thử mức:**
+
+| Ca | Cái sai bị chặn? | Có việc vẫn làm khi lẽ ra hỏi? | Người dùng thường chờ vô ích? |
+|---|---|---|---|
+| K1 | Có: AI không gọi `tu_choi_khieu_nai`; snapshot lúc đặt và phản hồi shop được hiện. | Không: gửi hồ sơ cần người mua xác nhận, quyết tiền ở nhân viên. | Có thể chờ shop/nhân viên, đổi lại không mất quyền vì kết luận nhầm. |
+| K2 | Có: AI không gọi `soan_hoan_tien`; đe dọa không là căn cứ. | Không: hỏi ảnh đo thực tế trước. | Người có ảnh đủ vẫn cần shop phản hồi; đây là chờ có lý do vì tiền khó đảo. |
+| K8 bình thường | Có: AI chỉ hướng dẫn và soạn yêu cầu, không hứa đã hoàn. | Không: người mua xác nhận đơn và ảnh trước gửi. | Không chờ nhân viên để được hướng dẫn; chỉ chờ sau khi gửi yêu cầu thật. |
+
+**Lời hứa đổi:** `soan_hoan_tien` ở mức cấm khiến giao diện nói “AI giúp chuẩn bị yêu cầu và chỉ ra bước tiếp theo”, không nói “AI sẽ hoàn tiền cho bạn”.
+
 
 ## §5. Prototype  (chặng 5)
 - File: [`prototype/index.html`](prototype/index.html). HTML/CSS/JS tĩnh, dữ liệu dựng, không backend và **không gọi AI thật**. Màn hình người mua và người bán là hai góc nhìn của cùng hồ sơ. Nút “Ca lạ” nhận lời kể để thử đường thiếu thông tin/ngoài phạm vi theo luật dựng, không giả vờ hiểu mọi câu.
