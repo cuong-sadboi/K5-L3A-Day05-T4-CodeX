@@ -10,9 +10,9 @@
 
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
-| Nguyễn Tiến Cường | 2A202603425 |  |
-| Lý Thành Lập | 2A202603414 |  |
-| Lê Văn Hoàng | 2A202603357 |  |
+| Nguyễn Tiến Cường | 2A202603425 | Dẫn §3 & §5: lời AI, đường lui, prototype, ảnh đánh số; bấm demo ca mô tả bị sửa. |
+| Lý Thành Lập | 2A202603414 | Dẫn §4, §6 & §7: mức tự chủ và thử trên 3 ca, tiêu chí Pass/Fail, demo ca lạ (§7); giải thích vì sao tiền không do AI quyết. |
+| Lê Văn Hoàng | 2A202603357 | Dẫn §1–2: phạm vi, 9 kịch bản, chọn 2 ca đắt nhất; trình bày 30 giây mở đầu và ca lạ. |
 
 ## §1. Lát cắt & phạm vi
 Trong **Trò chuyện với Shopee**, khi **người mua** báo “hàng nhận không đúng mô tả”, **AI tự hướng dẫn gửi yêu cầu trả hàng hoàn tiền, xin thêm bằng chứng, hay chuyển nhân viên**, để người mua biết đúng bước tiếp theo và người bán không bị xử thua khi họ đúng. Luồng thật hiện dùng menu, chọn đơn, gửi lý do/bằng chứng, cho người bán phản hồi rồi sàn xem xét khi bất đồng. AI thêm khả năng đọc lời kể và gợi ý bước kế tiếp, **không thêm quyền phân xử**.
