@@ -73,9 +73,9 @@ Thêm:
 - Một mức tự chủ đã đổi lời hứa nào với người dùng.
 
 ## §5. Prototype  (chặng 5)
-- Link hoặc file · công cụ · phần nào mock · có lời gọi AI thật không.
-- 1–2 ảnh có đánh số; mỗi số: thể hiện gì · nguyên tắc HAX/PAIR nào · mức tự chủ nào.
-- Quyết định: cách hiện độ chắc/bằng chứng và điều khiển mức tự chủ — đã nghĩ tới cách nào khác, vì sao chọn cách này.
+- File: [`prototype/index.html`](prototype/index.html). HTML/CSS/JS tĩnh, dữ liệu dựng, không backend và **không gọi AI thật**. Màn hình người mua và người bán là hai góc nhìn của cùng hồ sơ. Nút “Ca lạ” nhận lời kể để thử đường thiếu thông tin/ngoài phạm vi theo luật dựng, không giả vờ hiểu mọi câu.
+- Ảnh: [`prototype/01-nguoi-mua.svg`](prototype/01-nguoi-mua.svg), [`prototype/02-nguoi-ban.svg`](prototype/02-nguoi-ban.svg). Các số là vị trí trên prototype: **[1]** nhãn giới hạn (G2), **[2]** căn cứ lúc đặt so với hiện tại (G2/PAIR), **[3]** xác nhận/sửa đúng chỗ thiếu (G10), **[4]** chuyển người (G9), **[5]** hủy chuyển khi chưa nhận (G9).
+- Chọn hiển thị **dữ kiện và nguồn** thay vì “AI chắc 83%”, vì không có mô hình hiệu chuẩn; con số sẽ tạo cảm giác chính xác giả. Chọn nút xác nhận ngay cạnh nội dung sẽ gửi, thay vì nút “Xử lý” chung, để người mua thấy hành động có hậu quả. Chọn nút hủy chuyển trước khi nhân viên nhận, thay vì hứa hoàn tác tin đã gửi.
 
 ## §6. Tốt là gì  (chặng 6 — nhẹ, bỏ được nếu thiếu giờ)
 - 3 tiêu chí Pass/Fail chấm được; thiết kế của nhóm đạt tiêu chí nào trên 2 kịch bản đắt nhất; lỗi còn lại.
